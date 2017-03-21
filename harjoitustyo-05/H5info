@@ -1,0 +1,148 @@
+Monissa lauta-, video- ja roolipeleissä on usein mukana mekanismi,
+joka mahdollistaa pelaajan rakentavan/askartelevan (craft)itse erilaisia esineitä/tarvikkeita,
+joita hän voi sitten hyödyntää pelissä.Yleensä tilanne on vieläpä sellainen, että jotain voi rakentaa vasta,
+kun on ensin kerännyt tarvittavat raaka-aineet tai rakentanut halutun esineen osat.
+Peleissä on siis eräänlaisia sisäänrakennettuja tuotantoketjuja. 
+ 
+Yksinkertainen esimerkki on seuraava "resepti" rautalapion askartelemiseksi:
+
+    Rautalapio
+        Rautaharkkoja
+            Rautamalmia
+            Hiiltä
+                Puuta
+        Lapionvarsi
+            Lautaa
+                Puuta
+        Lautaa
+            Puuta 
+            
+Tuotentoketjun riippuvuuden esittävä rivi eli reseptirivit
+    Rivit, jotka ovat muotoa:
+
+          tuotettava_esine:tarvittava_materiaali
+kuvaavat sitä, että jotta pelissä voisi askarrella tuotettavan_esineen pelaajalla on oltava "repussaan" tarvittavaa_materiaalia.
+Jos verrataan yllä esitettyyn esimerkkiin, rautalapion rakentamisen kuvaava resepti esitettäisiin syötetiedostossa siten,
+että tiedostosta pitäisi löytyä rivit: 
+
+Ohjelman komennot esiteltynä:
+
+reppu materiaali1 ... materiaalin
+    Käyttäjä saa määrättyä, mitä materiaaleja kuvitellun pelaajan repussa on. Repun yksityiskohtaisempi käyttötarkoitus selviää tarkemmin myöhempien komentojen yhteydessä.
+
+    Komennon perään voi syöttää kuinka monta materiaalin nimeä ikinä haluaa, kaikki ne menevät reppuun myöhempää käyttöä varten. Jos repussa oli aiemmin jotain, sen vanha sisältö tyhjennetään ennen uusien materiaalien lisäämistä.
+
+    Komentona voi syöttää myös pelkän sanan reppu yksinään. Tämä tulkitaan tarkoittamaan sitä, että reppu halutaan tyhjentää: komennon suorituksen jälkeen repussa ei ole mitään.
+
+    Esimerkiksi:
+
+          testikayttoliittyma> reppu
+          Reppu tyhjennetty.
+          testikayttoliittyma> reppu kerma juusto voi suola
+          Repun sisalto asetettu.
+          testikayttoliittyma>  
+          
+          
+ tulostareppu
+    Komento tulostaa repun sisällön. Materiaalit tulostuvat samassa järjestyksessä kuin ne viimeisimmällä reppu-komennolla lisättiin.
+
+    Mikäli reppu on tyhjä, ei tulosteta mitään.
+
+    Esimerkiksi jatkona edellisen kohdan suoritusesimerkkiin:
+
+          testikayttoliittyma> tulostareppu
+          kerma
+          juusto
+          voi
+          suola
+          testikayttoliittyma> reppu
+          Reppu tyhjennetty.
+          testikayttoliittyma> tulostareppu
+          testikayttoliittyma>  
+          
+  materiaalit esine_tai_materiaali
+
+    Tulostaa näytölle aakkosjärjestyksessä kaikki materiaalit, joita tarvitaan esineen tai materiaalin askartelemiseen. Kuten edellä askarreltavissa-komennon yhteydessä toimittiin, tämäkin komento tulostaa vain lopputuloksen suorat edeltäjät. Jos suoria edeltäjiä ei ole, komento ei tulosta mitään.
+
+    Oletetaan seuraavissa esimerkeissä, että syötetiedosto kuvasti taas saman tuotantoketjun kuin kuvassa 1 oli esitetty:
+
+          testikayttoliittyma> materiaalit rautalapio
+          lapionvarsi
+          lautaa
+          rautaharkkoja
+          testikayttoliittyma> materiaalit rautaharkkoja
+          hiilta
+          rautamalmia
+          testikayttoliittyma> materiaalit puuta
+          testikayttoliittyma>  
+          
+          
+  askarreltavissa esine_tai_materiaali
+    Komento tutkii, löytyykö repusta kaikki materiaalit,
+    joita halutun esineen tai materiaalin askartelemiseen tarvitaan.
+    Täsmällisesti ottaen komento toimii siten, että lopputuloksen ajatellaan olevan askarreltavissa,
+    mikäli sen suorat edeltäjät tuotantoketjussa ovat repussa. Jokin asia on siis askarreltavissa,
+    mikäli repusta löytyy kaikki materiaalit, joista havaintokuviossa menee suoraan nuoli kyseiseen asiaan.
+
+    Esimerkiksi, jos verrataan alkuperäiseen rautalapio-kaavioon,
+    tämä tarkoittaa sitä, että rautalapio on askarreltavissa, jos repussa on rautaharkkoja, lapionvarsi ja lautaa.
+
+    Toisaalta, jos repusta puuttuu yksikin rautalapion suora edeltäjä,
+    tulkitaan tilanne siten, että rautalapio ei ole askarreltavissa.
+    Tämä siitäkin huolimatta, että repusta löytyy materiaalit puuttuvan suoran edeltäjän tuottamiseen.
+    Esimerkiksi, jos reppu sisältää puuta, lapionvarren ja rautaharkkoja, rautalapiota ei voi askarrella, koska lautaa ei ole.
+    Tämä siitäkin huolimatta, että repussa on puuta, josta lautaa voisi periaatteessa tuottaa.
+
+    Jos haluttu lopputulos on repussa jo valmiiksi, sen katsotaan olevan askarreltavissa.
+
+    Sellaisia asioita, joille ei ole syötetiedostossa esitetty tarvittavia materiaaleja (eli niihin ei tule nuolia),
+    voi askarrella vain, jos niitä on repussa jo valmiiksi.
+
+    Esimerkkejä askarreltavissa-komennon käyttäytymisestä, jos oletetaan että syötetiedosto esitti mukaisen tuotantojetjun:
+
+          testikayttoliittyma> reppu rautamalmia lautaa hiilta rautalapio
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa rautaharkkoja
+          On askarreltavissa.
+          testikayttoliittyma> reppu lapionvarsi rautalapio
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa rautalapio
+          On askarreltavissa.
+          testikayttoliittyma> reppu hiilta puuta rautamalmia
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa lapionvarsi
+          Ei ole askarreltavissa.
+          testikayttoliittyma> askarreltavissa lautaa
+          On askarreltavissa.
+          testikayttoliittyma> askarreltavissa hiilta
+          On askarreltavissa.
+          testikayttoliittyma> 
+          
+  askarreltavissa_bonus esine_tai_materiaali
+
+    Komento askarreltavissa_bonus toimii hyvin samankaltaisesti kuin komento askarreltavissa.
+    Ero on siinä, että tämä komento osaa päätellä, onko jokin esine tai materiaali askarreltavissa siinäkin tapauksessa,
+    että mahdollisesti puuttuvat välimateriaalit on tuotettavissa repussa olevista materiaaleista.
+
+    Tarkoituksena on siis tutkia koko tuotantoketjun suhdetta repun sisältöön,
+    eikä pelkästään niitä materiaaleja, joista menee suora yhteys lopputuloksen, kuten askarreltavissa-komento teki.
+
+    Tutkitaan taas esimerkki, samoilla oletuksilla kuin aiemminkin: syötetiedosto sisälsi kuvan 1 mukaisen tuotantoketjun:
+
+          testikayttoliittyma> reppu puuta rautamalmia
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa_bonus rautalapio
+          On askarreltavissa.
+          testikayttoliittyma> reppu puuta rautamalmia
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa_bonus rautaharkkoja
+          On askarreltavissa.
+          testikayttoliittyma> reppu rautamalmia hiilta
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa_bonus lautaa
+          Ei ole askarreltavissa.
+          testikayttoliittyma> reppu puuta
+          Repun sisalto asetettu.
+          testikayttoliittyma> askarreltavissa_bonus puuta
+          On askarreltavissa.
+          testikayttoliittyma>     
