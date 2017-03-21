@@ -9,8 +9,6 @@ pankkitili& haluttu_tili(char tilin_numero, pankkitili& tili1, pankkitili& tili2
 
 //Harjoitustyö 1
 //Matias Ala-Sunila
-//246417 matias.ala-sunila@student.tut.fi
-
 
 int main()
 {
