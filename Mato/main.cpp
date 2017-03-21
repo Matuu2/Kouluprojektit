@@ -5,8 +5,9 @@
 
 bool ratkaisunhaku(const vector<int>& madon_tiedot, Kuljetut &kuutio, vector<string>& suunnat, unsigned int indeksi);
 using namespace std;
+//Snakecube nimisen pulmapelin ratkontaohjelma. 
 
-//2,2,2,2,1,1,1,2,2,1,1,2,1,2,1,1,2
+//Oman kuutioni "koodi" 2,2,2,2,1,1,1,2,2,1,1,2,1,2,1,1,2
 int main(){
     //Avatun kuution tiedot.Ensimmäistä palikkaa ei oteta
     //mukaan laskuihin eikä mitään palikkaa lasketa kahdesti
