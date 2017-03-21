@@ -1,0 +1,101 @@
+Kun ohjelma käynnistyy, se lukee edellisessä kohdassa esitettyä muotoa olevan syötetiedoston nimeltä
+ 
+    tuotetiedot.txt
+    
+Ohjelma jäsentelee tiedostosta lukemansa rivit ja tallentaa eri kauppojen tuotetiedot sopivaan sisäiseen tietorakenteeseen.
+
+Kun tiedosto on luettu, ohjelma tulostaa kehotteen:
+
+    tuotehaku>␣ 
+
+Tähän kehotteeseen ohjelman käyttäjä voi syöttää seuraavia käskyjä: 
+
+lopeta
+    Ohjelman suoritus päätty ilman, että ohjelma tulostaa mitään. 
+
+kauppaketjut
+    Tulostaa aakkosjärjestyksessä alekkain kaikki tunnetut kauppaketjut.
+
+    Esimerkiksi:
+
+          tuotehaku>␣kauppaketjut
+          K-Citymarket
+          Prisma
+          S-Market
+          tuotehaku>␣ 
+          
+
+myymalat kauppaketjun_nimi
+    Tulostaa aakkosjärjestyksessä alekkain kaikki annetun kauppaketjun myymälät.
+
+    Esimerkiksi:
+
+          tuotehaku>␣myymalat K-Citymarket
+          Lielahti
+          Linnainmaa
+          Pirkkala
+          Turtola
+          tuotehaku>␣ 
+          
+
+halvin tuotteen_nimi
+    Tulostaa halvimman hinnan halutulle tuotteelle ja sen alle aakkosjärjestyksessä myymälät, joista tuotetta saa kyseisellä hinnalla.
+
+    Tulostusasu käy ilmi seuraavasta esimerkistä:
+
+          tuotehaku>␣halvin mansikkajogurtti
+          0.90 euroa
+          Prisma Kaleva
+          Prisma Koivistonkyla
+          tuotehaku>␣ 
+          
+
+    Hinta tulostetaan kahden desimaalin tarkkuudella.
+
+    Jos tuote on tuntematon (sitä ei siis esiinny minkään myymälän tuotevalikoimassa), tulostuu ilmoitus:
+
+          tuotehaku>␣halvin suklaakabanossi
+          Tuote ei kuulu valikoimiin.
+          tuotehaku>␣ 
+          
+
+    Jos tuote kuuluu ainakin joidenkin myymälöiden valikoimaan, mutta se on tilapäisesti loppu kaikista niistä, tulostetaan:
+
+          tuotehaku>␣halvin suklaamuna
+          Tuote on tilapäisesti loppu kaikkialta.
+          tuotehaku>␣ 
+          
+
+tuotevalikoima kauppaketjun_nimi kaupan_sijainti
+    Komento tulostaa tuotteen nimen mukaisessa aakkosjärjestyksessä kaikki kyseisen kauppaketjun halutun myymälän tuotevalikoimaan kuuluvat tuotteet ja niiden hinnat.
+
+    Esimerkki:
+
+          tuotehaku>␣tuotevalikoima Prisma Lielahti
+          mansikkajogurtti loppu
+          mustamakkara 2.90
+          tuotehaku>␣ 
+          
+
+    Hinnat tulostetaan kahden desimaalin tarkkuudella.
+
+tuotenimet
+    Ohjelma tulostaa näytölle kaikkien kauppaketjujen kaikkien myymälöiden tuotevalikoimat yhtenä pitkänä listana, jossa tuotteet ovat aakkosjärjestyksessä ja jokainen tuote on listalla vain kerran. Myös tuotteet, jotka ovat tilapäisesti lopussa, ovat mukana.
+
+    Esimerkki valaisee asiaa parhaiten:
+
+          tuotehaku>␣tuotenimet
+          aamujuoma
+          ahven
+          ananas
+          appelsiini
+            ⋮
+          maa-artisokka
+          mansikkajogurtti
+          mustamakkara
+          mutakakku
+          nektariini
+            ⋮
+          yrttimauste
+          tuotehaku>␣ 
+          
