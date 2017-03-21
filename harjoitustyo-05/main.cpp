@@ -1,7 +1,6 @@
 //------------------------------------------------
 // TIE-02200 Ohjelmoinnin peruskurssi
 // Harjoitustyö 5
-// Matias Ala-Sunila
 //------------------------------------------------
 #include "apufunktiot.hh"
 #include "kayttoliittyma.hh"
