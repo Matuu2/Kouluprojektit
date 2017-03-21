@@ -1,5 +1,6 @@
-// TIE-02200 Ohjelmoinnin perusteet Harjoitustyö 4
-// Matias Ala-Sunila 
+// TIE-02200 Ohjelmoinnin perusteet 
+// Harjoitustyö 4
+
 
 #include "painoindeksilaskin.hh"
 #include <QApplication>
