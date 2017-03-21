@@ -8,7 +8,6 @@ double kysy_rahamaaraa();
 pankkitili& haluttu_tili(char tilin_numero, pankkitili& tili1, pankkitili& tili2,pankkitili& tili3);
 
 //Harjoitustyö 1
-//Matias Ala-Sunila
 
 int main()
 {
