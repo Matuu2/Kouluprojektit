@@ -1,5 +1,4 @@
 //Ohjelmoinnin peruskurssi  Harjoitustyö 2
-//Matias Ala-Sunila
 //Alkuhuomio: Koodissa on käytetty tekstitiedoston riveistä seuraavia termejä:
 //ensimmäinen rivi on kauppaketju(Prisma,...) toinen rivi on myymälä(Lielahti,...)
 
