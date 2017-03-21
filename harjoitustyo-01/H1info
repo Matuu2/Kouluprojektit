@@ -1,0 +1,73 @@
+Toteutettava ohjelma:
+
+Toteutetaan ohjelma, jolla voidaan simuloida pankkitilin käyttäytymistä.
+Pankkitili toteutetaan luokkana, jonka julkisessa rajapinnassa on operaatiot,
+joiden avulla pankkitiliolioille voidaan tehdä kaikki tarvittaat operaatiot.
+Luokan julkista rajapintaa ei mitenkään määritellä tässä tehtävänannossa, vaan se jää jokaisen itsensä suunniteltavaksi.
+Seuraavassa kuvataan vain yksinkertainen testikäyttöliittymä, josta voi päätellä, mitä kaikkea pankkitilille on tarpeen tehdä.
+Olennaista on se, että pankkitili on toteutettu luokkana, joka esittää yhtä pankkitiliä.
+Tarkoitus ei siis ole toteuttaa luokkaa, joka mallintaa pankkia (eli usean pankkitilin muodostamaa kokonaisuutta). 
+
+------Esimerkkejä toiminnoista-----
+
+Esimerkkejä tulosta-komennon toiminnasta:
+
+    pankkitilitesti>␣tulosta␣1
+    Tilinumero:␣FI1122223333444455
+    Saldo:␣13.21
+    Asiakasnumero:␣1234567
+    pankkitilitesti>␣tulosta␣3
+    Tilinumero:␣FI5544443333222211
+    Saldo:␣16721.02
+    Asiakasnumero:␣4711123
+    pankkitilitesti>␣ 
+    
+Esimerkki aseta-komennon toiminnasta:
+
+    pankkitilitesti>␣aseta␣2
+    Syötä␣tilinumero:␣DE6677778888999900
+    Syötä␣saldo:␣123.45
+    Syötä␣asiakasnumero:␣4567890
+    Tilin␣2␣tiedot␣asetettu.
+    pankkitilitesti>␣tulosta␣2
+    Tilinumero:␣DE6677778888999900
+    Saldo:␣123.45
+    Asiakasnumero:␣4567890
+    pankkitilitesti>␣ 
+    
+Esimerkki pano-komennon toiminnasta (sama kuin otto):
+
+    pankkitilitesti>␣tulosta␣1
+    Tilinumero:␣FI1122223333444455
+    Saldo:␣13.21
+    Asiakasnumero:␣1234567
+    pankkitilitesti>␣pano␣1
+    Syötä␣rahamäärä:␣20.77
+    Pano␣suoritettu␣tilille␣1.
+    pankkitilitesti>␣tulosta␣1
+    Tilinumero:␣FI1122223333444455
+    Saldo:␣33.98
+    Asiakasnumero:␣1234567
+    pankkitilitesti>␣ 
+    
+Esimerkki tilisiirto-komennon toiminnasta:
+
+    pankkitilitesti>␣tulosta␣1
+    Tilinumero:␣FI1122223333444455
+    Saldo:␣13.21
+    Asiakasnumero:␣1234567
+    pankkitilitesti>␣tulosta␣3
+    Tilinumero:␣FI5544443333222211
+    Saldo:␣16721.02
+    Asiakasnumero:␣4711123
+    pankkitilitesti>␣tilisiirto␣3␣1
+    Syötä␣siirtomäärä:␣721.02
+    pankkitilitesti>␣tulosta␣1
+    Tilinumero:␣FI1122223333444455
+    Saldo:␣734.23
+    Asiakasnumero:␣1234567
+    pankkitilitesti>␣tulosta␣3
+    Tilinumero:␣FI5544443333222211
+    Saldo:␣16000.00
+    Asiakasnumero:␣4711123
+    pankkitilitesti>␣ 
